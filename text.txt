@@ -1,0 +1,6 @@
+
+docker network create vegetable-net
+docker build -t veg-order:v1 .
+
+docker run -d --name veg-app --network vegetable-net -p 27017:27017 mongo
+docker run -d --name veg-app --network vegetable-net  -p 3000:3000 veg-order:v1
